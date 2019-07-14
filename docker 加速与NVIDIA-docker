@@ -1,0 +1,18 @@
+# nvidia-docker设置   设置阿里云镜像加速
+
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://0f94xv6e.mirror.aliyuncs.com"],
+    "runtimes":
+     {
+        "nvidia": { "path": "nvidia-container-runtime","runtimeArgs": [] }   
+     }
+}
+EOF
+
+
+# 修改完成后reload配置文件
+sudo systemctl daemon-reload
+
+# 重启docker服务
+sudo systemctl restart docker

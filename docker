@@ -1,0 +1,164 @@
+##############################################帮助命令################################################
+sudo groupadd docker			创建docker用户组
+sudo usermod -aG docker $USER		加入当前用户进用户组，之后可以不用sudo了
+
+docker version				docker版本
+docker info				详细信息
+docker --help			 	帮助命令
+
+
+##############################################镜像命令################################################
+
+docker images				查看本地镜像
+docker search <image name>		在官网搜索镜像
+docker pull <image name>		拉取镜像
+docker search -s 10 <image name>	加上-s选项，列出star数大于10的镜像
+docker rmi [-f] <image name>		删除镜像  ， -f强制删除
+
+
+##############################################容器命令################################################
+
+docker run -it <IMAGE ID>		根据镜像创建并运行一个容器，-i交互式环境，-t为容器分配一个伪终端
+docker ps				查看正在运行的容器,-l上次运行的，-a历史运行过的，-n 3 上3次运行过的
+exit					容器停止退出
+Ctrl+p+q				暂时退出容器，不停止容器
+docker start <CONTAINER ID>		启动容器
+docker stop <CONTAINER ID>		停止容器
+docker kill <CONTAINER ID>		强制停止容器
+docker rm <CONTAINER ID>		删除已停止的容器， -f强制删除
+docker rm $(sudo docker ps -a)		删除全部容器
+docker ps -q				只显示ID
+
+docker run -d centos <IMAGE ID>			后台运行，没有交互窗口
+docker logs [-t f tail] <CONTAINER ID>		查看容器日志，t显示时间，f刷新查看，tail显示末尾若干行
+docker top	<CONTAINER ID>			查看容器进程
+docker inspect <CONTAINER ID>			查看容器内部细节
+docker attach <CONTAINER ID>			重新进入容器启动终端，不会启动新进程
+docker exec -t  <CONTAINER ID> ls		容器命令执行完后返回宿主机，在容器中打开的新终端（新进程）
+docker cp <CONTAINER ID>:/tmp/yum.log /home	将容器内文件复制到宿主机
+
+其中docker run的参数含义如下：  
+（1）--rm       退出容器清除数据, 退出容器后会删除容器
+（2）-it        启动交互式终端
+（3）-v         挂载目录
+（4）--name     容器名称
+（5）-p		主机端口：docker容器端口
+（6）-P		随机分配端口
+--rm 和 -d不能共用！
+
+##############################################镜像commit################################################
+
+docker commit -a='author' -m='messages' <CONTAINER ID> <image name:tag>	将修改的容器提交为新的镜像
+
+
+##############################################容器数据卷###############################################
+1.数据卷可以在容器之间共享和重用数据
+2.卷中的更改可以直接生效
+3.数据卷中的更改不会包含在镜像的更新中
+4.数据卷的生命周期持续到没有容器使用它为止
+					-------命令添加数据卷-------
+docker run -it -v /宿主机目录:/容器内目录 <image name>	目录共享（会自动生产目录),容器停止后，主机修改仍同步
+docker run -it -v /宿主机目录:/容器内目录:ro <image name>	容器只读，不能修改
+＃　若写权限不够，在容器目录后加上　--privileged=true
+				       -----DockerFile添加数据卷------
+镜像的描述文件 
+
+#############################################容器间数据共享##############################################
+
+docker run -it --name <contaioner_2> --volumes-from <contaioner_1> <image name>
+	（contaioner_2的数据卷继承自contaioner_1，contaioner_1删除，数据卷仍在contaioner_2中生效）
+
+# 数据卷的生命周期持续到没有容器使用它为止
+
+
+#############################################DockerFile解析##############################################
+
+定义：构建docker镜像的构建文件，一系列命令和参数构成的脚本
+
+	1.手动编写一个DockerFile文件，符合file规范
+	2.docker build -f <文件名> -t 新镜像名:TAG .   命令执行，获得一个自定义的镜像
+	3.run
+
+保留字指令：
+
+FROM		基础镜像，当前镜像基于哪个镜像的
+MAINTAINER	镜像维护者的姓名和邮箱地址
+RUN		容器构建时需要运行的命令
+EXPOSE		当前容器对外暴露的端口号
+WORKDIR		创建容器后，进入终端的工作路径
+ENV		用来构建镜像过程中设置环境变量
+ADD		将宿主机目录下文件拷贝至镜像，且自动处理ＵＲＬ和解压ｔａｒ包
+COPY		拷贝
+VOLUME		容器数据卷，保存数据和持久化工作
+CMD		指定一个容器启动时要运行的命令，可以有多个但只有最后一个生效，CMD会被docker run后面的参数替换
+ENTERYPOINT	与CMD目的相同，添加参数,不覆盖　
+ONBUILD		当构建一个被继承的dockerfile时运行命令，父镜像在被子继承后，父镜像的onbuild会被触发
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
