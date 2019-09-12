@@ -33,7 +33,7 @@
 		\quad \quad L2范数(向量的模):  \[\|x\|_2=\sqrt{\sum_{i=1}^n(x_i)^2}\]
 		
 		\subsection{矩阵}
-		(1)矩阵乘法：
+		(1)矩阵乘法： 
 		\[\begin{cases}
 			(AB)C=A(BC)\\
 			(A+B)C=AC+BC\\
@@ -215,8 +215,18 @@
 		\[lnL(\theta) = \sum_{i=1}^l lnp(x_i|\theta)\]
 		\[max \sum_{i=1}^l lnp(x_i|\theta)\]
 		
+		\section{优化问题}
+		\subsection{拉格朗日乘子法}
+		有优化问题：
+		\[minf(x)\]
+		\[s.t.\quad h_i(x)=0,\quad i=1,\cdots,p\]
 		
+		将上述带等式约束的优化问题转化为不带约束的优化问题：
+		\[L(x,\lambda) = f(x) + \sum_{i=1}^p \lambda_i h_i(x) \]
 		
+		对上式关于$x$求导得：
+		\[ \nabla_xf + \sum_{i=1}^{p} \lambda_i\nabla_xh_i=0  \]
+		\[ h_i(x)=0 \]
 
 	
 		
