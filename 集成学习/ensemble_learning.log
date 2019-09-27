@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2019.6.20)  12 SEP 2019 17:16
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2019.6.20)  13 SEP 2019 19:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1417,19 +1417,50 @@ File: 1.png Graphic file (type QTm)
 
 ]
 File: 2.png Graphic file (type QTm)
- <use  "2.png" > [2] (./ensemble_learning.aux)
+ <use  "2.png" > [2]
+Missing character: There is no ， in font [lmroman12-regular]:mapping=tex-text!
+File: 3.png Graphic file (type QTm)
+ <use  "3.png" >
+File: 4.png Graphic file (type QTm)
+ <use  "4.png" >
+File: 5.png Graphic file (type QTm)
+
+<use  "5.png" >
+File: 6.png Graphic file (type QTm)
+ <use  "6.png" >
+File: 7.png Graphic file (type QTm)
+ <use  "7.png" > [3]
+File: 15.png Graphic file (type QTm)
+ <use  "15.png" >
+File: 8.png Graphic file (type QTm)
+
+<use  "8.png" > [4]
+File: 9.png Graphic file (type QTm)
+ <use  "9.png" > [5]
+File: 10.png Graphic file (type QTm)
+ <use  "10.png" > [6]
+File: 11.png Graphic file (type QTm)
+ <use  "11.png" >
+File: 12.png Graphic file (type QTm)
+
+<use  "12.png" > [7]
+File: 13.png Graphic file (type QTm)
+ <use  "13.png" >
+File: 14.png Graphic file (type QTm)
+ <use  "14.png" > [8]
+(./ensemble_learning.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.41063pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 21342 strings out of 493638
- 434779 string characters out of 6146796
+ 21390 strings out of 493638
+ 436212 string characters out of 6146796
  422637 words of memory out of 5000000
- 24535 multiletter control sequences out of 15000+600000
+ 24570 multiletter control sequences out of 15000+600000
  14471 words of font info for 76 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  65i,7n,77p,10450b,261s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on ensemble_learning.pdf (2 pages).
+Output written on ensemble_learning.pdf (8 pages).

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2019.6.20)  9 SEP 2019 17:20
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2019.6.20)  24 SEP 2019 18:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1385,7 +1385,12 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(./信息论笔记.toc)
+(./信息论笔记.toc
+
+LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <10.53937> not available
+(Font)              size <10.95> substituted on input line 2.
+
+)
 \tf@toc=\write3
 \openout3 = `信息论笔记.toc'.
 
@@ -1409,14 +1414,19 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 .................................................
 [1
 
-] (./信息论笔记.aux) ) 
-Here is how much of TeX's memory you used:
- 21302 strings out of 493638
- 433924 string characters out of 6146796
- 424625 words of memory out of 5000000
- 24510 multiletter control sequences out of 15000+600000
- 10088 words of font info for 57 fonts, out of 8000000 for 9000
- 1328 hyphenation exceptions out of 8191
- 65i,6n,77p,10438b,259s stack positions out of 5000i,500n,10000p,200000b,80000s
+] [2] [3] [4] (./信息论笔记.aux)
 
-Output written on 信息论笔记.pdf (1 page).
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.41063pt have occurred.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 21339 strings out of 493638
+ 434783 string characters out of 6146796
+ 426625 words of memory out of 5000000
+ 24535 multiletter control sequences out of 15000+600000
+ 14479 words of font info for 77 fonts, out of 8000000 for 9000
+ 1328 hyphenation exceptions out of 8191
+ 65i,11n,77p,10438b,259s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on 信息论笔记.pdf (4 pages).

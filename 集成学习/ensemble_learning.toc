@@ -3,3 +3,5 @@
 \contentsline {section}{\numberline {2}Boosting}{1}
 \contentsline {subsection}{\numberline {2.1}Boosting的框架}{2}
 \contentsline {subsection}{\numberline {2.2}Adaboost}{2}
+\contentsline {subsection}{\numberline {2.3}Adaboost数学证明}{5}
+\contentsline {subsection}{\numberline {2.4}Gradient Boosting}{6}

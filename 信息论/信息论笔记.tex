@@ -19,7 +19,7 @@
 	\tableofcontents
 	\songti \zihao{-4}
 	
-	\section{信息的度量}
+	\section{信息熵}
 		信息量$I(x)=f\big(p(x)\big)$，函数$f$需满足下列四个条件：
 		
 		\quad1.$f$单调递减，事件发生的概率越小，获得的信息量越大。
@@ -40,9 +40,84 @@
 		现在假设一个发送者想传送一个随机变量的值给接收者。那么在这个过程中，他们传输的平均信息量可以通过求$I(x)$关于概率分布$p(x)$的期望求得，随机变量X的\uline{信息熵}的定义：
 		\[H(X)= -\sum_{i=1}^np(x_i)logp(x_i)\]
 		熵越大，随机变量的不确定性就越大。是对所有可能发生的事件产生的信息量的期望。
-
-		`
-	
+		
+		\subsection{代数性质}
+			\subsubsection{对称性}
+				变量$p_1,p_2,\cdots,p_r$的顺序任意互换，熵不变。
+				\[H(p_1,p_2,\cdots,p_r) = H(p_2,\cdots,p_r,p_1) = H(p_r,p_1,p_2,\cdots,p_{r-1})\]
+			\subsubsection{非负性}
+				\[H(p_1,p_2,\cdots,p_r) \geq 0\]
+			\subsubsection{连续性}
+				$H(p_1,p_2,\cdots,p_r)$ 是$p_i$的连续函数。
+			\subsubsection{扩展性}
+				\[\lim_{\varepsilon\rightarrow0}H(p_1,p_2,\cdots,p_i-\varepsilon,\cdots,p_r,\varepsilon_1,\varepsilon_2,\cdots,\varepsilon_k)=H(p_1,p_2,\cdots,p_r)\]
+				其中每个$\varepsilon$都趋于0。当信源的消息集中的消息数增多时，因为这些消息对于的概率很小(比重很小)，所以信源的熵不变。
+			\subsubsection{可加性}
+				统计独立的两个信源X,Y的两个联合信源的熵等于分别熵之和:
+				\[H(X,Y) = H(X)+H(Y)\]	
+				\[\begin{aligned}
+					H(X,Y)&=-\sum_{i=1}^n\sum_{j=1}^mp_iq_jlogp_iq_j\\
+					& =-\sum_{i=1}^n\sum_{j=1}^mp_iq_jlogp_i-\sum_{i=1}^n\sum_{j=1}^mp_iq_jlogq_j\\
+					& =-\sum_{i=1}^n\big(\sum_{j=1}^mp_iq_j\big)logp_i-\sum_{j=1}^m\big(\sum_{i=1}^np_iq_j\big)logq_j\\
+					& =-\sum_{i=1}^np_ilogp_i-\sum_{j=1}^mq_jlogq_j = H(X)+H(Y)
+				\end{aligned}\]
+			\subsubsection{递增性}
+				将信源X中的其中一个元素划分成m个元素，这m个元素的概率之和等于原元素的概率，熵增加。
+				\[H_{n+m-1}(p_1,p_2,\cdots,p_{n-1},q_1,q_2,\cdots,q_m) = H_n((p_1,p_2,\cdots,p_{n-1},p_n)
+				+p_nH_m(\frac{q_1}{p_n},\frac{q_2}{p_n},\cdots,\frac{q_m}{p_n})\]
+		\subsection{解析性质}
+			\subsubsection{最大离散熵定理}
+				在离散信源情况下，信源各符号等概率分布时，熵达到最大。（概率分布越接近平均分布，熵越大）
+				\[H(p_1,p_2,\cdots, p_r) \leq H(\frac{1}{r},\frac{1}{r},\cdots,\frac{1}{r})\leq logr\]
+			\subsubsection{上凸性}
+				熵函数是严格的上凸函数：
+				\[H(\theta P_1+(1-\theta) P_2) > \theta H( P_1)+(1-\theta)H(P_2)\]
+	\section{信道}
+		离散单符号信道可用传递概率表示：
+			\[ 
+			\begin{bmatrix} 
+			P(b_1|a_1) &  P(b_2|a_1) & \cdots & P(b_s|a_1)\\
+			P(b_1|a_2) &  P(b_2|a_2) & \cdots & P(b_s|a_2)\\
+			\vdots & \vdots &   & \vdots\\
+			(b_1|a_r) &  P(b_2|a_r) & \cdots & P(b_s|a_r)
+			\end{bmatrix} 
+			 \]
+			 a为输入，b为输出。且传递矩阵(信道矩阵)每一行的元素相加等于1，即：
+			 \[\sum_{j=1}^sP(b_j|a_i)=1\]
+			 $P(b_i|a_i)$表示发送a收到b的概率（前向概率）描述了信道噪声的特征，$P(a_i|b_i)$表示接受到了$b_i$，发送端发送$a_i$的概率（后向概率）。
+		\subsection{互信息与平均互信息}
+			互信息(Mutual Information):$I(a_i;b_j)$表示接受到$b_j$后，能从$b_j$获得的关于$a_i$的信息量。
+			互信息的三种写法：
+			\[\begin{aligned}
+				I(a_i;b_j) &= I(a_i) - I(a_i | b_j)\\
+				& =I(b_j) - I(b_j | a_i)\\
+				&  = I(a_i) + I(b_j) -I(a_i,b_j)
+			\end{aligned}\]
+			
+			但是单个样本的互信息不足以表示整个系统，因此需要对多个样本取期望，即平均互信息：
+			\[I(X;Y) = E_{P(X,Y)}\{I(a_i;b_j)\}\]
+			
+			对于单个样本的互信息，其值可正可负或为零，但是平均互信息一定不会为负值。
+			
+			证明：
+			\[I(X;Y) = E_{P(X,Y)}\{I(a_i;b_j)\} = \sum_i\sum_j P(a_i,b_j)log\frac{P(a_i,b_j)}{P(a_i)P(b_j)}\]
+			\[-I(X;Y) = \sum_i\sum_j P(a_i,b_j)log\frac{P(a_i)P(b_j)}{P(a_i,b_j)}\]
+			根据琴生不等式，以及：
+			\[\sum_i\sum_jP(a_i)P(b_j)=1\]
+			所以
+			 \[-I(X;Y) = \sum_i\sum_j P(a_i,b_j)log\frac{P(a_i)P(b_j)}{P(a_i,b_j)} \leq log\Big(\sum_i\sum_j P(a_i,b_j)\frac{P(a_i)P(b_j)}{P(a_i,b_j)}\Big)=log1=0\]
+			 即
+			 \[I(X;Y) \geq0\]
+			 
+			 互信息有三种写法，平均信息也衍生出三种写法：
+				\[\begin{aligned}
+				I(X;Y) &= H(X) - H(X|Y)\\
+				& =H(Y)-H(Y|X)\\
+				&  =H(X)+H(Y)-H(XY)
+				\end{aligned}\]
+			 其中$H(X|Y)$称为疑义度,$H(Y|X)$称为噪声熵，$H(XY)$称为联合熵（共熵）。
+			 
+			
 	
 		
 \end{document}

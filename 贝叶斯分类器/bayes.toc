@@ -1,0 +1,9 @@
+\contentsline {section}{\numberline {1}全概率与贝叶斯公式}{1}
+\contentsline {section}{\numberline {2}贝叶斯统计思想与贝叶斯估计}{2}
+\contentsline {subsection}{\numberline {2.1}共轭先验分布}{2}
+\contentsline {subsection}{\numberline {2.2}后验分布计算}{2}
+\contentsline {section}{\numberline {3}朴素贝叶斯分类器}{3}
+\contentsline {section}{\numberline {4}EM算法}{3}
+\contentsline {subsection}{\numberline {4.1}最大似然估计}{3}
+\contentsline {subsection}{\numberline {4.2}高斯混合模型}{3}
+\contentsline {subsubsection}{\numberline {4.2.1}EM算法}{4}
