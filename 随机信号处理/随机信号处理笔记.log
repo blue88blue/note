@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2019.6.20)  24 SEP 2019 21:17
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2019.6.20)  9 OCT 2019 16:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1449,19 +1449,35 @@ File: 16.png Graphic file (type QTm)
  <use  "16.png" >
 File: 17.png Graphic file (type QTm)
  <use  "17.png" >
-[8] [9] (./随机信号处理笔记.aux)
+[8]
+Overfull \hbox (50.68973pt too wide) in paragraph at lines 246--247
+[]\EU1/FandolSong-Regular(1)/m/n/12.045 迭 代 下 降 法：|  从 某 一 初 始 值 $[]\OT1/cmr/m/
+n/12.045 (0)$ \EU1/FandolSong-Regular(1)/m/n/12.045 开 始，|  按 照 固 定 的 步 骤，|  产 生
+ 一 系 列 权 重 向 量 $[]\OT1/cmr/m/n/12.045 (1)\OML/cmm/m/it/12.045 ; []\OT1/cmr/m/n/
+12.045 (2)\OML/cmm/m/it/12.045 ; []\OT1/cmr/m/n/12.045 (3)\OML/cmm/m/it/12.045 
+; [] $\EU1/FandolSong-Regular(1)/m/n/12.045 ，|
+ []
+
+[9] [10]
+File: 18.png Graphic file (type QTm)
+ <use  "18.png" >
+File: 19.png Graphic file (type QTm)
+ <use  "19.png" >
+File: 20.png Graphic file (type QTm)
+ <use  "20.png" > [11] [12]
+(./随机信号处理笔记.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.41063pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 21445 strings out of 493638
- 439421 string characters out of 6146796
+ 21488 strings out of 493638
+ 441866 string characters out of 6146796
  426628 words of memory out of 5000000
- 24619 multiletter control sequences out of 15000+600000
+ 24659 multiletter control sequences out of 15000+600000
  14495 words of font info for 79 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  65i,11n,77p,10441b,261s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 随机信号处理笔记.pdf (9 pages).
+Output written on 随机信号处理笔记.pdf (12 pages).

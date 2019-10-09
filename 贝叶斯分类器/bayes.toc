@@ -6,4 +6,5 @@
 \contentsline {section}{\numberline {4}EM算法}{3}
 \contentsline {subsection}{\numberline {4.1}最大似然估计}{3}
 \contentsline {subsection}{\numberline {4.2}高斯混合模型}{3}
-\contentsline {subsubsection}{\numberline {4.2.1}EM算法}{4}
+\contentsline {subsubsection}{\numberline {4.2.1}EM算法的有效性证明}{4}
+\contentsline {subsubsection}{\numberline {4.2.2}使用EM}{5}

@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2019.6.20)  9 OCT 2019 16:19
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2019.6.20)  30 SEP 2019 15:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**信息论笔记.tex
-(./信息论笔记.tex
+**Markov.tex
+(./Markov.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/ctex/ctexart.cls
@@ -1264,8 +1264,8 @@ Package: multicol 2015/08/19 v1.8n multicolumn formatting (FMi)
 \mult@nat@firstbox=\box81
 \colbreak@box=\box82
 \mc@col@check@num=\count159
-) (./信息论笔记.aux)
-\openout1 = `信息论笔记.aux'.
+) (./Markov.aux)
+\openout1 = `Markov.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
@@ -1385,14 +1385,9 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(./信息论笔记.toc
-
-LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <10.53937> not available
-(Font)              size <10.95> substituted on input line 2.
-
-)
+(./Markov.toc)
 \tf@toc=\write3
-\openout3 = `信息论笔记.toc'.
+\openout3 = `Markov.toc'.
 
 
 *************************************************
@@ -1414,23 +1409,14 @@ LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <10.53937> not available
 .................................................
 [1
 
-] [2] [3] [4]
-File: 1.png Graphic file (type QTm)
- <use  "1.png" >
-File: 2.png Graphic file (type QTm)
- <use  "2.png" > [5] [6] [7] [8] (./信息论笔记.aux)
-
-LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 0.41063pt have occurred.
-
- ) 
+] (./Markov.aux) ) 
 Here is how much of TeX's memory you used:
- 21454 strings out of 493638
- 441419 string characters out of 6146796
- 428625 words of memory out of 5000000
- 24644 multiletter control sequences out of 15000+600000
- 14495 words of font info for 79 fonts, out of 8000000 for 9000
+ 21245 strings out of 493638
+ 430276 string characters out of 6146796
+ 417626 words of memory out of 5000000
+ 24453 multiletter control sequences out of 15000+600000
+ 10088 words of font info for 57 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 65i,14n,77p,10438b,261s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 65i,6n,77p,10439b,259s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 信息论笔记.pdf (8 pages).
+Output written on Markov.pdf (1 page).

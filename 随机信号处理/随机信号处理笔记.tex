@@ -128,6 +128,7 @@
 				\begin{figure}[H]
 					\centering\includegraphics[scale=0.3]{8.png}
 				\end{figure}
+				
 	\section{维纳滤波器}
 		\begin{figure}[H]
 			\centering\includegraphics[scale=0.3]{9.png}
@@ -178,7 +179,7 @@
 			
 			\textbf{正交性原理}:代价函数最小的充要条件是：估计误差$e_o(n)$与n时刻进入期望响应估计的每个输入样值$u(n-k)$正交。
 			\begin{figure}[H]
-				\centering\includegraphics[scale=0.25]{11.png}
+				\centering\includegraphics[scale=0.3]{11.png}
 			\end{figure}
 		\subsection{最小均方误差}
 			达到最优时：
@@ -198,23 +199,23 @@
 			\[\sigma = \frac{J_{min}}{\sigma_d^2} = 1-\frac{\sigma_{\hat{d}}^2}{\sigma_d^2}, \quad 0\leq \sigma\leq1\]
 		\subsection{维纳-霍夫方程（求解）}	
 			\begin{figure}[H]
-				\centering\includegraphics[scale=0.25]{12.png}
+				\centering\includegraphics[scale=0.3]{12.png}
 			\end{figure}
 			\begin{figure}[H]
-				\centering\includegraphics[scale=0.25]{13.png}
+				\centering\includegraphics[scale=0.3]{13.png}
 			\end{figure}
 			
 			将$r(i-k)$与$p(-k)$代入:
 
 			\begin{figure}[H]
-				\centering\includegraphics[scale=0.25]{15.png}
+				\centering\includegraphics[scale=0.3]{15.png}
 			\end{figure}
 		
 			\begin{figure}[H]
-				\centering\includegraphics[scale=0.25]{16.png}
+				\centering\includegraphics[scale=0.3]{16.png}
 			\end{figure}
 			\begin{figure}[H]
-				\centering\includegraphics[scale=0.25]{17.png}
+				\centering\includegraphics[scale=0.3]{17.png}
 			\end{figure}
 			
 			\textbf{换个角度：利用向量求导来求解}
@@ -235,14 +236,84 @@
 			\end{aligned}
 			\]
 			其中$E\big[\textbf{u}(n)\textbf{u}^H(n)\big] = \textbf{R}$, 并令$E\big[\textbf{u}(n)d^*(n)\big] =\textbf{p} $（与维纳-霍夫方程中的记法相同），带入上式得损失函数：
-			\[J(\textbf{w}) = E[|e(n)|^2]  = \sigma_d^2 - \textbf{p}\textbf{w} + \textbf{w}^H\textbf{p} +\textbf{w}^HR\textbf{w}\]
+			\[J(\textbf{w}) = E[|e(n)|^2]  = \sigma_d^2 - \textbf{p}^H\textbf{w} + \textbf{w}^H\textbf{p} +\textbf{w}^H\textbf{Rw}\]
 			
 			对上式求$\textbf{w}$的共轭梯度，并令其等于0：
 			\[\frac{\partial J(\textbf{w})}{\partial\textbf{w}^*} = -\textbf{p} + \textbf{R} \textbf{w}=0\]
 			同样可以求得参数$\textbf{w}$。
+	\section{最速下降法}
+		\subsection{最速下降法的基本思想}
+			迭代下降法：从某一初始值$\textbf{w}(0)$开始，按照固定的步骤，产生一系列权重向量$\textbf{w}(1),\textbf{w}(2),\textbf{w}(3),\cdots $，使得代价函数的值在每一次迭代之后都下降：
+			\[J(\textbf{w}(n+1)) < J(\textbf{w}(n))\]
+			
+			迭代下降法的一种简单形式——最速下降法，沿着负梯度方向连续调整权重向量$\textbf{w}$，
+			将梯度表示为：
+			\[\textbf{g} = \nabla J(\textbf{w})\]
+			从而最速下降法可表示为($\mu$为步长)：
+			\[\textbf{w}(n+1) = \textbf{w}(n) -\frac{1}{2}\mu\textbf{g}(n)\]
 		
-		
-		
+		\subsection{最速下降算法应用于维纳滤波器}
+			第2章中提到维纳滤波器的代价函数为：
+			\[J(\textbf{w}) = E[|e(n)|^2]  = \sigma_d^2 - \textbf{p}^H\textbf{w}(n) + \textbf{w}^H(n)\textbf{p} +\textbf{w}^H(n)R\textbf{w}(n)\]
+			其中：
+			\[\begin{aligned}
+			\sigma_d^2 &= E[d^2(n)]\\
+			\textbf{p} &= E[\textbf{u}()d^*(n)]\\
+			\textbf{R} &= E[\textbf{u}(n)\textbf{u}^H(n)]
+			\end{aligned}\]
+			其梯度向量为：
+			\[\nabla J(n) = -2\textbf{p}+2\textbf{Rw}(n)\]
+			代入最速下降法的公式中,迭代解为：
+			\[\textbf{w}(n+1) = \textbf{w}(n) + \mu(\textbf{p}-\textbf{Rw}(n))\]
+			
+			【1】与维纳滤波器的闭合解$\textbf{w}_o=\textbf{R}^{-1}\textbf{p}$相比，迭代解不需要求相关矩阵$\textbf{R}$的逆。
+			
+			【2】迭代解是经典的最小均方算法的基础。
+			
+		\subsection{最速下降法的稳定性}	
+			问：当$n\rightarrow\infty$时，是否有$\textbf{w}(n)\rightarrow\textbf{w}_o$?若有，需要满足什么条件？
+			
+			\uline{定义}：n时刻的权重误差向量：
+			\[\textbf{c}(n) = \textbf{w}_o -\textbf{w}(n)\]
+			将迭代式：
+			\[\textbf{w}(n+1) = \textbf{w}(n) + \mu(\textbf{p}-\textbf{Rw}(n))\]
+			两边同时减去$\textbf{w}_o$，并消去负号，可得：
+			\[\textbf{c}(n+1) = \textbf{c}(n) - \mu(\textbf{p}-\textbf{Rw}(n))\]
+			将维纳方程$\textbf{Rw}_o=\textbf{p}$代入上式，消去$\textbf{p}$，可得：
+			\[\textbf{c}(n+1) = \textbf{c}(n) -\mu\textbf{R}(\textbf{w}_o-\textbf{w}(n))\]
+			\[\textbf{c}(n+1) = (\textbf{I}-\mu\textbf{R})\textbf{c}(n)\]
+			根据上式的误差向量的关系类推，得到：
+			\[\textbf{c}(n+1) = (\textbf{I}-\mu\textbf{R})^2\textbf{c}(n-1)\]
+			\[\textbf{c}(n+1) = (\textbf{I}-\mu\textbf{R})^{n+1}\textbf{c}(0)\]
+			每一次迭代之后误差向量都乘上了$(\textbf{I}-\mu\textbf{R})$,如果该项小于0，那么误差向量是在不断减小的。
+			
+			\uline{使用特征值分解}，将相关矩阵分解为:
+			\[\textbf{R} = \textbf{Q}\Lambda\textbf{Q}^H\]
+			迭代式变为：
+			\[\textbf{c}(n+1) = (\textbf{I}-\mu\textbf{Q}\Lambda\textbf{Q}^H)\textbf{c}(n)\]
+			两边同乘以$\textbf{Q}^H$:
+			\[\begin{aligned}
+			\textbf{Q}^H\textbf{c}(n+1) &= (\textbf{Q}^H-\mu\Lambda\textbf{Q}^H)\textbf{c}(n)\\
+			&=(\textbf{I}-\mu\Lambda)\textbf{Q}^H\textbf{c}(n)
+			\end{aligned}\]
+			定义变换向量$\textbf{v}(n)=\textbf{Q}^H\textbf{c}(n)$,代换后有：
+			\[\textbf{v}(n+1) = (\textbf{I}-\mu\Lambda)\textbf{v}(n)\]
+			初始权重常取$\textbf{w}(0) = \textbf{0}$,所以：
+			\[\textbf{v}(0) = \textbf{Q}^H\textbf{c}(0) = \textbf{Q}^H[\textbf{w}_o-\textbf{0}] = \textbf{Q}^H\textbf{w}_o\]
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.3]{18.png}
+			\end{figure}
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.3]{19.png}
+			\end{figure}
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.3]{20.png}
+			\end{figure}
+			
+			
+			
+			
+	\section{自适应滤波器}
 		
 
 \end{document}

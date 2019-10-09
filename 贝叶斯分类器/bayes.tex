@@ -79,7 +79,7 @@
 		1.如果$\pi(Y)$未知，则假设先验概率分布是等概率。所以有
 		\[maxP(Y|X)\rightarrow P(X|Y)\]
 		
-		2.如果$\pi(Y)$已知：$maxP(X|Y)\pi(Y)$\\
+		2.如果$\pi(Y)$已知：$maxP(X|Y)\pi(Y)$
 		
 		求：
 		\[P(Y|X) \quad\propto\quad P(X|Y)\pi(Y)\]
@@ -124,7 +124,7 @@
 		因为$z_i$都是正整数，所以积分变为求和,仍等于高斯混合模型：
 		\[P(x_i) = \int_{z_i}P_\theta(x_i|z_i)\cdot P_\theta(z_i)dz_i = \sum_{i=1}^k\alpha_lN(\mu_iil,\varepsilon_i)\]
 		
-		\subsubsection{EM算法}
+		\subsubsection{EM算法的有效性证明}
 			EM算法：
 			\[\theta^{(g+1)} = \arg\max_{\theta}\int logP(X,Z|\theta)\cdot P(Z|X,\theta^{(g)})dZ\]
 			
@@ -141,12 +141,70 @@
 			\[\int logP(Z|X,\theta)\cdot P(Z|X,\theta^{(g)})dZ = H(\theta, \theta^{(g)})\]
 			因此只需证明$H(\theta^{(g+1)}, \theta^{(g)}) \leq  H(\theta, \theta^{(g)})$,就能证明算法的有效性。证：
 			\[H(\theta^{(g)}, \theta^{(g)}) -  H(\theta, \theta^{(g)})\geq 0\]
+			
+			\[
+			H(\theta^{(g)}, \theta^{(g)}) -  H(\theta, \theta^{(g)})=\int logP(Z|X,\theta^{(g)})\cdot P(Z|X,\theta^{(g)})dZ-\int logP(Z|X,\theta)\cdot P(Z|X,\theta^{(g)})dZ\]
+			
+			\[=\int-log\Bigg(\frac{P(Z|X,\theta)}{P(Z|X,\theta^{(g)})}\Bigg)P(Z|X,\theta^{(g)})dZ
+			\]
+
+			根据琴生不等式:-log函数是凸函数，所以有(函数的期望大于期望的函数)：
+			\[E[f(x)]\geq f(E[x])\]
+			
+			\[\int-log\Bigg(\frac{P(Z|X,\theta)}{P(Z|X,\theta^{(g)})}\Bigg)P(Z|X,\theta^{(g)})dZ \\
+			\geq -log\int\frac{P(Z|X,\theta)}{P(Z|X,\theta^{(g)})}P(Z|X,\theta^{(g)})dZ = -log1=0
+			\]
+			
+		\subsubsection{使用EM}
+			\[\theta^{(g+1)} = \arg\max_{\theta}\int logP(X,Z|\theta)\cdot P(Z|X,\theta^{(g)})dZ\]
+			
+			对于每一个样本点x,都有与其对应的z,而每一对$\{x_i,z_i\}$都是独立的，因此算法迭代式中的$P(X,Z|\theta)$就为：
 			\[\begin{aligned}
-			H(\theta^{(g)}, \theta^{(g)}) -  H(\theta, \theta^{(g)})&=\int logP(Z|X,\theta^{(g)})\cdot P(Z|X,\theta^{(g)})dZ-\int logP(Z|X,\theta)\cdot P(Z|X,\theta^{(g)})dZ
+			P(X,Z|\theta) &= \prod_{i=1}^n P(x_i,z_i|\theta) \\
+			&= \prod_{i=1}^n P(x_i|z_i,\theta)P(z_i|\theta)\\
+			&= \prod_{i=1}^n \alpha_{z_i} N(\mu_{z_i},\varepsilon_{z_i})
 			\end{aligned}\]
 			
+			由于样本独立，迭代式中的另一部分可以写成：
+			\[P(Z|X,\theta) = \prod_{i=1}^nP(z_i|x_i,\theta^{(g)})\]
+			其中连乘的每一项表示为（全概率公式）(该样本属于某个高斯分布的概率)：
+			\[P(z_i|x_i,\theta)  = \frac{P(x_i|z_i)p(z_i)}{\sum_{z_{i}=1}^kP(x_i|z_i)p(z_i)}\]
+			形象地表示：
+			\begin{figure}[H]
+				\centering{\includegraphics[scale=0.4]{3.png}}
+			\end{figure}		
+			将上述的两个部分带入迭代式,由于z为一系列整数，将积分换成求和。
+			(N个样本，k个高斯模型)
 			
+			\textbf{E-step:}
+			\[\sum_{z_1=1}^k\sum_{z_2=1}^k\cdots\sum_{z_N=1}^k\bigg(\sum_{i=1}^N
+			\underbrace{[log\alpha_{z_i}+logN(x_i|\mu_{z_i},\varepsilon_{z_i})]}_{f_i(z_i)}
+			\underbrace{\prod_{i=1}^nP(z_i|x_i,\theta^{(g)})}_{P(z_1,\cdots,z_N)}\bigg)\]
 			
+			\[=\sum_{z_1=1}^k\sum_{z_2=1}^k\cdots\sum_{z_N=1}^k\Big(f_1(z_1)+f_2(z_2)+\cdots +f_N(z_N)\Big)P(z_1,\cdots,z_N)\]
+			
+			\[=\sum_{z_1=1}^k\sum_{z_2=1}^k\cdots\sum_{z_N=1}^kf_1(z_1)P(z_1,\cdots,z_N)+\sum_{z_1=1}^k\sum_{z_2=1}^k\cdots\sum_{z_N=1}^kf_2(z_2)P(z_1,\cdots,z_N)+\cdots\]
+			
+			以第一项为例进行简化：
+			\[\sum_{z_1=1}^k\sum_{z_2=1}^k\cdots\sum_{z_N=1}^kf_1(z_1)P(z_1,\cdots,z_N) = \sum_{z_1=1}^kf_1(z_1)\cdot \underbrace{\sum_{z_2=1}^k\cdots\sum_{z_N=1}^kP(z_1,\cdots,z_N)}_{P(z_1)\text{的边缘分布}}\]
+			\[=\sum_{z_1=1}^kf_1(z_1)P(z_1)\]
+			
+			所以E-step的步骤可以简化为: 
+			\[\sum_{i=1}^N\sum_{z_i=1}^k\Big(log\alpha_{z_i}+logN(x_i|\mu_{z_i},\varepsilon_{z_i})\Big) P(z_i|x_i,\theta^{(g)})\]
+			
+			\textbf{M-step:}
+			
+			分别对$\alpha$和$\mu,\varepsilon$求偏导，并令其等于0，取极大值。
+			
+			首先对$\alpha$求偏导使得：
+			\[\frac{\partial\sum_{i=1}^N\sum_{z_i=1}^klog\alpha_{z_i}P(z_i|x_i,\theta^{(g)})}{\partial\alpha_1,\cdots,\partial\alpha_k} = [0\cdots0],\quad s.t.\sum_{z_i=1}^k\alpha_{z_i}=1\]
+			
+			这是一个带约束条件的优化问题，利用拉格朗日乘数法来求解：
+			\[L(\alpha_1,\alpha_2,\cdots,\alpha_k,\lambda) = \sum_{z_i=1}^klog\alpha_{z_i}\Bigg(\sum_{i=1}^NP(z_i|x_i,\theta^{(g)})\Bigg)\]
+			
+			\[\Longrightarrow \frac{\partial L}{\partial\alpha_i}  = \frac{1}{\alpha_i}\Bigg(\sum_{i=1}^NP(z_i|x_i,\theta^{(g)})\Bigg) \]
+							
+			\[?\Longrightarrow \alpha_i = \frac{1}{N}\sum_{i=1}^NP(z_i|x_i,\theta^{(g)})\]
 			
 			
 			

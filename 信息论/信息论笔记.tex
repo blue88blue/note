@@ -87,7 +87,7 @@
 			 $P(b_i|a_i)$表示发送a收到b的概率（前向概率）描述了信道噪声的特征，$P(a_i|b_i)$表示接受到了$b_i$，发送端发送$a_i$的概率（后向概率）。
 		\subsection{互信息与平均互信息}
 			互信息(Mutual Information):$I(a_i;b_j)$表示接受到$b_j$后，能从$b_j$获得的关于$a_i$的信息量。
-			互信息的三种写法：
+			\uline{互信息的三种写法：}
 			\[\begin{aligned}
 				I(a_i;b_j) &= I(a_i) - I(a_i | b_j)\\
 				& =I(b_j) - I(b_j | a_i)\\
@@ -109,15 +109,136 @@
 			 即
 			 \[I(X;Y) \geq0\]
 			 
-			 互信息有三种写法，平均信息也衍生出三种写法：
+			 \uline{互信息有三种写法，平均互信息也衍生出三种写法：}
 				\[\begin{aligned}
-				I(X;Y) &= H(X) - H(X|Y)\\
-				& =H(Y)-H(Y|X)\\
-				&  =H(X)+H(Y)-H(XY)
+				I(X;Y) &= H(X) - \underbrace{H(X|Y)}_{\text{疑义度（损失熵）}}\\
+				& =H(Y)-\underbrace{H(Y|X)}_{\text{噪声熵}}\\
+				&  =H(X)+H(Y)-\underbrace{H(XY)}_{\text{联合熵（共熵）}}
 				\end{aligned}\]
-			 其中$H(X|Y)$称为疑义度,$H(Y|X)$称为噪声熵，$H(XY)$称为联合熵（共熵）。
-			 
+		\subsection{信道容量}	
+			每一个信道都有一个最大的信息传输率，这个最大传输率定义为：
+			\[C = \max_{P(x)}\{I(X;Y)\}\quad \text{单位：比特/符号}\]
 			
-	
+			信道单位时间内平均传输的最大信息量为：
+			\[C_t = \frac{C}{t}\quad \text{单位：比特/秒}\]
+			
+		\subsubsection{无噪无损信道(输入输出一一对应)}
+			该信道的信道矩阵每行每列仅有一个1，其他都为0。
+			
+			这类信道的平均互信息为：
+			 \[\begin{aligned}
+			 I(X;Y) &= H(X) - \underbrace{H(X|Y)}_{\text{疑义度=0}}\\
+			 & =H(Y)-\underbrace{H(Y|X)}_{\text{噪声熵=0}}\\
+			 &  =H(X) = H(Y)
+			 \end{aligned}\]
+			 当输入信源确定后，接收到的符号也确定，为确定性事件，所以噪声熵为0；同理疑义度（损失熵）也为0。
+			 
+			 当输入信源等概率分布时，此类信道的信息传输率达到极大值：
+			 \[C = \max_{P(x)}\{I(X;Y) = \max_{P(x)}H(X) = logr\]
+		\subsubsection{无损信道}	
+			一个输入对应多个输出，但是每个输出只对应一个输入。
+			\begin{figure}[H]
+				\centering{\includegraphics[scale=0.4]{1.png}}
+			\end{figure}
+			
+			\textbf{信道矩阵特点：}信道矩阵中每列有且仅有一个非零元素。
+			
+			这类信道的损失熵（疑义度）=0,即当输出符号确定后，输入符号也随之确定。噪声熵不为0。
+			
+			平均互信息为：
+			\[I(X;Y) = H(X)<H(Y)\]
+			
+			信道容量为(信源等概率分布时取到)：
+			\[C = \max_{P(x)}H(X) = logr\]
+		\subsubsection{无噪有损信道}
+			多个输入对应一个输出，一个输出对应多个输入。
+			\begin{figure}[H]
+				\centering{\includegraphics[scale=0.4]{2.png}}
+			\end{figure}
+			\textbf{信道矩阵特点：}每行仅有一个非零元素。
+			
+			这类信道的噪声熵为0，损失熵（疑义度）不为0。
+			
+			平均互信息：
+			\[I(X;Y) = H(Y)<H(X)\]
+			
+			信道容量为（总能找到一个最佳的输入分布X，使得输出Y达到等概率分布）：
+			\[C = \max_{P(x)}H(Y) = logr\]
+		\subsubsection{对称离散信道}
+			\textbf{信道矩阵特点：}信道矩阵中的每一行都是由同一$\{p_1^,,p_2^,,...,p_s^,\}$集的各个元素不同排列组成。每一行都是由同一$\{q_1^,,q_2^,,...,q_r^,\}$集的各个元素不同排列组成。
+			平均互信息：
+			\[I(X;Y) = H(Y)-H(Y|X)\]
+			\[H(Y|X) = \sum_XP(x)|sum_YP(y|x)log\frac{1}{P(y|x)} = \sum_XP(x)H(Y|X=x)\]
+			x取某一值时，$H(Y|X=x)$即为对信道矩阵的某一行求和，因为信道矩阵每一行都是相同元素的排列组合，所以该值对于所以的x都相同，即与x无关：
+			\[H(Y|X=x) = H(p_1^,,p_2^,,...,p_s^,)\]
+			
+			所以信道容量C为：
+			\[C = \max_{P(x)}[H(Y) -  H(p_1^,,p_2^,,...,p_s^,)]\]
+			问题转化为求一个输入分布$P(x)$，使得$H(Y)$取最大值的问题。若输出信号Y等概率分布，就能得到最大的$H(Y)=logs$。
+			
+			每个输出符号的概率为：
+			\[P(y_i) = \sum_{X}P(x)P(y_i|x)\]
+			
+			将输入信号设为等概率分布，即$P(x)=\frac{1}{r}$,上式变为：
+			\[P(y_i) = \sum_{X}\frac{1}{r}P(y_i|x) = \frac{1}{r}\sum_{X}P(y_i|x)\]
+			
+			由于信道矩阵的每一列都是相同元素的不同组合，所以$\sum_{X}P(y_i|x)$不变，为信道矩阵每一列的和$\sum_{i=1}^sq_i^,$。即当输入信号等概率时，输出信号也等概率。
+			
+			对称离散信道的信道容量为:
+			\[C =  logr -  H(p_1^,,p_2^,,...,p_s^,),(\text{比特/符号})\]
+		\subsubsection{准对称信道}
+			\textbf{信道矩阵特点：}1.行可排。2.列不可排，若分为若干子集，在子集中可排。
+			
+			将信道矩阵按列分为m个子集，每个子集含有$s_l$列，$l=1,2,...,m$。$P(b_l)$为第$l$个子集输出符号的平均概率。
+			
+			准对称信道的信道容量为：
+			\[C = -\sum_{l=1}^ms_lP(b_l)log(b_l) -H(p_1^,,p_2^,,...,p_s^,) \]
+			
+		\subsubsection{一般离散信道（等量平衡定理）}
+			求信道容量,等价于一个带约束的优化问题：
+			\[C = \max_{P(x)}I(X;y),\quad s.t.\sum_{i=1}^rP(a_i)=1\]
+			
+			利用拉格朗日乘子法，做辅助函数：
+			\[F(p(a_1),p(a_2),...p(a_r),\lambda) = I(X;Y)- \lambda\bigg[\sum_{i=1}^rP(a_i)-1\bigg]\]
+			分别对$p(a_1),p(a_2),...p(a_r)$求偏导，并置之为零。
+			
+			\[\begin{aligned}
+			\frac{\partial F}{\partial P(a_i)} &= \frac{\partial I(X;Y)}{\partial P(a_i)}-\lambda\\
+			&=\sum_{j=1}^sp(b_j|a_i)ln\frac{p(b_j|a_i)}{p(b_j)}-1-\lambda\\
+			&=I(a_i;Y)-1-\lambda
+			\end{aligned}\]
+			
+			即：
+			\[\sum_{j=1}^sp(b_j|a_i)ln\frac{p(b_j|a_i)}{p(b_j)}= 1+\lambda\]
+			假设使$I(X;Y)$达到最大值的输入信源的概率是${p_1,p_2,...p_r}$，两边关于输入信源的概率求积分（求和）：
+			\[\sum_{i=1}^r\sum_{j=1}^sp_ip(b_j|a_i)ln\frac{p(b_j|a_i)}{p(b_j)}= \sum_{i=1}^rp_i(1+\lambda)\]
+			等式左边就是信道容量，所以：
+			\[C = 1+\lambda\]
+			\textbf{等量平衡定理}:当信道的平均互信息达到信道容量时，输入信源符号集中的每个信源符号x对输入端提供的互信息都相等，除概率为0的符号以外。
+			
+		\subsubsection{可逆矩阵信道的信道容量}
+			略（手写笔记）
+		\subsubsection{信道容量的迭代计算}	
+			一般信道容量计算复杂，使用迭代的方法对信道容量近似计算。
+				
+			信道的平均互信息是先验概率$p(a_i)$和后验概率$p(a_i|b_j)$的一个函数：
+			\[I(X;Y) = H(X)-H(X|Y) = -\sum_{i=1}^rp(a_i)lnp(a_i)+\sum_{i=1}^r\sum_{j=1}^sp(a_i)p(b_j|a_i)lnp(a_i|b_j)\]
+			而这两个变量之间并不是独立的，满足:
+			\[p(a_i|b_j) = \frac{p(a_i)p(b_j|a_i)}{\sum_{i=1}^rp(a_i)p(b_j|a_i)}\]
+			
+			1.固定$p(a_i)$，求解使得$I(X;Y)$最大的$p(a_i|b_j)$。
+			
+			2.固定$p(a_i|b_j)$，求解使得$I(X;Y)$最大的$p(a_i)$。
+			
+			3.重复上述步骤，不断迭代至收敛。
+	\subsection{平均互信息量的不增性}
+		略（手写笔记）
+		
+		
+				
+		
+		
+		
+		
 		
 \end{document}
