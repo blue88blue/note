@@ -314,6 +314,71 @@
 			
 			
 	\section{自适应滤波器}
+		上两章中求解维纳滤波器的封闭解和数值解时，需要的已知条件为：相关矩阵$\textbf{R}$，输入信号与期望响应的互相关向量$\textbf{p}$。
+		
+		然而，在实际应用中，$\textbf{R}$和$\textbf{p}$大部分情况下是未知的；如果信号是时变的，则$\textbf{R}$和$\textbf{p}$都是时变的。所以需要一种能够实时估计或者跟踪信号的的统计特性方法，即自适应滤波方法。
+		
+		\subsection{LMS自适应滤波算法}
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.5]{21.png}
+			\end{figure}
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.5]{22.png}
+			\end{figure}	
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.5]{23.png}
+			\end{figure}
+	
+		\subsection{LMS算法的收敛性证明}
+			证明参数是否收敛到某一个值：
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{24.png}
+			\end{figure}
+			近似处理：$\textbf{w}(n)$与$\textbf{u}(n)$不相关：
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{25.png}
+			\end{figure}
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{26.png}
+			\end{figure}
+			将$\textbf{R}$对角化：
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{27.png}
+			\end{figure}	
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{28.png}
+			\end{figure}
+			单位矩阵拆分，$Q,Q^{-1}$左右抵消：	
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{29.png}
+			\end{figure}
+			参数收敛，对步长的限制与最速下降法相同：
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{30.png}
+			\end{figure}
+			然而特征值未知，近似处理：
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{31.png}
+			\end{figure}
+			
+			参数收敛了，是否收敛到$\textbf{w}_o$：
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{32.png}
+			\end{figure}
+			矩阵的等比数列求和(除法变为求逆):
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{33.png}
+			\end{figure}
+			
+				
+	
+	
+	
+	
+	
+	
+	
+	
 		
 
 \end{document}

@@ -1,1 +1,7 @@
-\contentsline {section}{\numberline {1}概率图}{1}
+\contentsline {section}{\numberline {1}绪论}{1}
+\contentsline {subsection}{\numberline {1.1}基础概念}{1}
+\contentsline {subsection}{\numberline {1.2}条件独立性}{2}
+\contentsline {section}{\numberline {2}贝叶斯网络}{2}
+\contentsline {subsection}{\numberline {2.1}贝叶斯网络的三种结构的独立性}{2}
+\contentsline {subsection}{\numberline {2.2}D划分（d-Separation）}{3}
+\contentsline {section}{\numberline {3}Markov网络}{4}

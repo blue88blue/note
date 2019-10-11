@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2019.6.20)  9 OCT 2019 16:19
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2019.6.20)  11 OCT 2019 10:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1421,12 +1421,12 @@ File: 2.png Graphic file (type QTm)
 File: 3.png Graphic file (type QTm)
  <use  "3.png" >
 File: 4.png Graphic file (type QTm)
- <use  "4.png" >
+ <use  "4.png" > [2]
 File: 5.png Graphic file (type QTm)
 
 <use  "5.png" >
 File: 6.png Graphic file (type QTm)
- <use  "6.png" > [2]
+ <use  "6.png" >
 File: 7.png Graphic file (type QTm)
  <use  "7.png" > [3] [4]
 File: 8.png Graphic file (type QTm)
@@ -1435,21 +1435,20 @@ File: 9.png Graphic file (type QTm)
 
 <use  "9.png" > [5]
 File: 10.png Graphic file (type QTm)
- <use  "10.png" >
+ <use  "10.png" > [6]
 File: 11.png Graphic file (type QTm)
- <use  "11.png" > [6]
+ <use  "11.png" > [7]
 File: 12.png Graphic file (type QTm)
  <use  "12.png" >
 File: 13.png Graphic file (type QTm)
 
-<use  "13.png" > [7]
+<use  "13.png" >
 File: 15.png Graphic file (type QTm)
  <use  "15.png" >
 File: 16.png Graphic file (type QTm)
  <use  "16.png" >
 File: 17.png Graphic file (type QTm)
- <use  "17.png" >
-[8]
+ <use  "17.png" > [8]
 Overfull \hbox (50.68973pt too wide) in paragraph at lines 246--247
 []\EU1/FandolSong-Regular(1)/m/n/12.045 迭 代 下 降 法：|  从 某 一 初 始 值 $[]\OT1/cmr/m/
 n/12.045 (0)$ \EU1/FandolSong-Regular(1)/m/n/12.045 开 始，|  按 照 固 定 的 步 骤，|  产 生
@@ -1464,20 +1463,49 @@ File: 18.png Graphic file (type QTm)
 File: 19.png Graphic file (type QTm)
  <use  "19.png" >
 File: 20.png Graphic file (type QTm)
- <use  "20.png" > [11] [12]
-(./随机信号处理笔记.aux)
+ <use  "20.png" > [11]
+File: 21.png Graphic file (type QTm)
+
+<use  "21.png" >
+File: 22.png Graphic file (type QTm)
+ <use  "22.png" > [12]
+File: 23.png Graphic file (type QTm)
+ <use  "23.png" >
+File: 24.png Graphic file (type QTm)
+ <use  "24.png" >
+[13]
+File: 25.png Graphic file (type QTm)
+ <use  "25.png" >
+File: 26.png Graphic file (type QTm)
+ <use  "26.png" >
+File: 27.png Graphic file (type QTm)
+ <use  "27.png" >
+File: 28.png Graphic file (type QTm)
+ <use  "28.png" >
+[14]
+File: 29.png Graphic file (type QTm)
+ <use  "29.png" >
+File: 30.png Graphic file (type QTm)
+ <use  "30.png" > [15]
+File: 31.png Graphic file (type QTm)
+ <use  "31.png" >
+File: 32.png Graphic file (type QTm)
+ <use  "32.png" >
+File: 33.png Graphic file (type QTm)
+
+<use  "33.png" > [16] [17] (./随机信号处理笔记.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.41063pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 21488 strings out of 493638
- 441866 string characters out of 6146796
+ 21523 strings out of 493638
+ 442610 string characters out of 6146796
  426628 words of memory out of 5000000
- 24659 multiletter control sequences out of 15000+600000
+ 24681 multiletter control sequences out of 15000+600000
  14495 words of font info for 79 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  65i,11n,77p,10441b,261s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 随机信号处理笔记.pdf (12 pages).
+Output written on 随机信号处理笔记.pdf (17 pages).
