@@ -1,7 +1,29 @@
-\contentsline {section}{\numberline {1}绪论}{1}
-\contentsline {subsection}{\numberline {1.1}基础概念}{1}
+\contentsline {section}{\numberline {1}绪论}{2}
+\contentsline {subsection}{\numberline {1.1}基础概念}{2}
 \contentsline {subsection}{\numberline {1.2}条件独立性}{2}
-\contentsline {section}{\numberline {2}贝叶斯网络}{2}
-\contentsline {subsection}{\numberline {2.1}贝叶斯网络的三种结构的独立性}{2}
-\contentsline {subsection}{\numberline {2.2}D划分（d-Separation）}{3}
-\contentsline {section}{\numberline {3}Markov网络}{4}
+\contentsline {section}{\numberline {2}指数族分布}{3}
+\contentsline {subsection}{\numberline {2.1}高斯分布指数族形式}{3}
+\contentsline {subsection}{\numberline {2.2}对数分配函数与充分统计量之间的关系}{4}
+\contentsline {subsection}{\numberline {2.3}极大似然估计与充分统计量}{4}
+\contentsline {subsection}{\numberline {2.4}最大熵角度}{5}
+\contentsline {subsection}{\numberline {2.5}共轭分布}{6}
+\contentsline {section}{\numberline {3}贝叶斯网络}{6}
+\contentsline {subsection}{\numberline {3.1}贝叶斯网络的三种结构的独立性}{6}
+\contentsline {subsection}{\numberline {3.2}D划分（d-Separation）}{8}
+\contentsline {section}{\numberline {4}Markov网络}{9}
+\contentsline {section}{\numberline {5}推断inference}{9}
+\contentsline {subsection}{\numberline {5.1}变量消去(variable elimanation)}{9}
+\contentsline {subsection}{\numberline {5.2}信念传播(belief propagation)}{10}
+\contentsline {subsection}{\numberline {5.3}Max-product Algorithm}{11}
+\contentsline {section}{\numberline {6}变分推断(Variational Inference)}{11}
+\contentsline {subsection}{\numberline {6.1}引入}{11}
+\contentsline {subsection}{\numberline {6.2}推导}{12}
+\contentsline {subsection}{\numberline {6.3}应用}{14}
+\contentsline {subsection}{\numberline {6.4}SGVI}{14}
+\contentsline {subsection}{\numberline {6.5}指数族分布+变分推断}{15}
+\contentsline {section}{\numberline {7}马尔科夫链蒙特卡洛方法}{16}
+\contentsline {subsection}{\numberline {7.1}cdf采样}{17}
+\contentsline {subsection}{\numberline {7.2}拒绝采样}{18}
+\contentsline {subsection}{\numberline {7.3}重要性采样}{20}
+\contentsline {subsection}{\numberline {7.4}马尔科夫链的平稳分布}{20}
+\contentsline {subsection}{\numberline {7.5}MCMC}{21}

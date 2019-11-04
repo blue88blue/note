@@ -123,7 +123,7 @@
 		\[P_\theta(x_i|z_i) = N(\mu_i,\varepsilon_i)\]
 		因为$z_i$都是正整数，所以积分变为求和,仍等于高斯混合模型：
 		\[P(x_i) = \int_{z_i}P_\theta(x_i|z_i)\cdot P_\theta(z_i)dz_i = \sum_{i=1}^k\alpha_lN(\mu_iil,\varepsilon_i)\]
-		
+			将上式代入极大似然估计的公式中，由于log函数中是连加，所以无法得到解析解，需要用迭代算法来求解。
 		\subsubsection{EM算法的有效性证明}
 			EM算法：
 			\[\theta^{(g+1)} = \arg\max_{\theta}\int logP(X,Z|\theta)\cdot P(Z|X,\theta^{(g)})dZ\]
@@ -155,6 +155,7 @@
 			\geq -log\int\frac{P(Z|X,\theta)}{P(Z|X,\theta^{(g)})}P(Z|X,\theta^{(g)})dZ = -log1=0
 			\]
 			
+			
 		\subsubsection{使用EM}
 			\[\theta^{(g+1)} = \arg\max_{\theta}\int logP(X,Z|\theta)\cdot P(Z|X,\theta^{(g)})dZ\]
 			
@@ -176,7 +177,7 @@
 			将上述的两个部分带入迭代式,由于z为一系列整数，将积分换成求和。
 			(N个样本，k个高斯模型)
 			
-			\textbf{E-step:}
+			\textbf{E-step:}(求隐变量？)
 			\[\sum_{z_1=1}^k\sum_{z_2=1}^k\cdots\sum_{z_N=1}^k\bigg(\sum_{i=1}^N
 			\underbrace{[log\alpha_{z_i}+logN(x_i|\mu_{z_i},\varepsilon_{z_i})]}_{f_i(z_i)}
 			\underbrace{\prod_{i=1}^nP(z_i|x_i,\theta^{(g)})}_{P(z_1,\cdots,z_N)}\bigg)\]
@@ -192,22 +193,49 @@
 			所以E-step的步骤可以简化为: 
 			\[\sum_{i=1}^N\sum_{z_i=1}^k\Big(log\alpha_{z_i}+logN(x_i|\mu_{z_i},\varepsilon_{z_i})\Big) P(z_i|x_i,\theta^{(g)})\]
 			
+			\[\theta^{(g+1)} =\arg\max_{\theta} \sum_{i=1}^N\sum_{z_i=1}^k\Big(log\alpha_{z_i}+logN(x_i|\mu_{z_i},\varepsilon_{z_i})\Big)\underbrace{\frac{P(x_i|z_i)p(z_i)}{\sum_{z_{i}=1}^kP(x_i|z_i)p(z_i)}}_{P(z_i|x_i,\theta^{(g)})}\]
+			
 			\textbf{M-step:}
 			
 			分别对$\alpha$和$\mu,\varepsilon$求偏导，并令其等于0，取极大值。
 			
-			首先对$\alpha$求偏导使得：
+			\uline{首先对$\alpha$求偏导使得：}
 			\[\frac{\partial\sum_{i=1}^N\sum_{z_i=1}^klog\alpha_{z_i}P(z_i|x_i,\theta^{(g)})}{\partial\alpha_1,\cdots,\partial\alpha_k} = [0\cdots0],\quad s.t.\sum_{z_i=1}^k\alpha_{z_i}=1\]
 			
 			这是一个带约束条件的优化问题，利用拉格朗日乘数法来求解：
-			\[L(\alpha_1,\alpha_2,\cdots,\alpha_k,\lambda) = \sum_{z_i=1}^klog\alpha_{z_i}\Bigg(\sum_{i=1}^NP(z_i|x_i,\theta^{(g)})\Bigg)\]
+			\[L(\alpha_1,\alpha_2,\cdots,\alpha_k,\lambda) = \sum_{z_i=1}^klog\alpha_{z_i}\Bigg(\sum_{i=1}^NP(z_i|x_i,\theta^{(g)})\Bigg) +\lambda\Bigg(\sum_{z_i=1}^k\alpha_{z_i}-1\Bigg)\]
 			
-			\[\Longrightarrow \frac{\partial L}{\partial\alpha_i}  = \frac{1}{\alpha_i}\Bigg(\sum_{i=1}^NP(z_i|x_i,\theta^{(g)})\Bigg) \]
-							
-			\[?\Longrightarrow \alpha_i = \frac{1}{N}\sum_{i=1}^NP(z_i|x_i,\theta^{(g)})\]
+			\[\Longrightarrow \frac{\partial L}{\partial\alpha_i}  = \frac{1}{\alpha_i}\Bigg(\sum_{i=1}^NP(z_i|x_i,\theta^{(g)})\Bigg)+\lambda =0 \]
 			
+			\[\Longrightarrow\sum_{i=1}^NP(z_i|x_i,\theta^{(g)}) +\alpha_i\lambda=0\]
 			
+			利用约束条件$\sum_{z_i=1}^k\alpha_{z_i}=1$,求和:
+			\[\Longrightarrow\sum_{i=1}^N\underbrace{\sum_{z_i=1}^kP(z_i|x_i,\theta^{(g)})}_{=1} +\underbrace{\sum_{z_i=1}^k\alpha_i}_{=1}\lambda=0\]
 			
+			\[\Longrightarrow N+\lambda =0, \quad \lambda=-N\]
+			
+			将$\lambda$代入可得：				
+			\[\Longrightarrow \alpha_i = \frac{1}{N}\sum_{i=1}^NP(z_i|x_i,\theta^{(g)}) = \frac{1}{N}\sum_{i=1}^N\frac{p(z_i)N(x_i|\theta^{(g)})}{\sum_{z_{i}=1}^kp(z_i)N(x_i|\theta^{(g)}}\]
+			
+			\uline{对均值求偏导并置之为零：}
+			
+			二维的高斯分布公式：
+			\[N(\bm{x}|\bm{\mu},\bm{\Sigma}) = \frac{1}{2\pi|\bm{\Sigma}|^{\frac{1}{2}}}exp[-\frac{1}{2}(\bm{x}-\bm{\mu})^T\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu})]\]
+			
+			其中向量$\bm{x}=[x,y]$表示样本的坐标，$\bm{\mu}=[x_0,y_0]$为高斯分布的均值，$\bm{\Sigma}$为二维随机变量x，y的协方差矩阵。
+			
+			去除无关项，并代入高斯分布函数：
+			\[F = \sum_{i=1}^N\sum_{z_i=1}^k\Big(log\frac{1}{2\pi|\bm{\Sigma}|^{\frac{1}{2}}}-\frac{1}{2}(\bm{x}-\bm{\mu})^T\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu}))\Big)
+			P(z_i|x_i,\theta^{(g)})\]
+			
+			\textbf{对$\bm{\mu}_{z_i}$求导：}
+			\[\frac{\partial F}{\partial \bm{\mu}_{z_i}} = \sum_{i=1}^N\bm{\Sigma}_{z_i}^{-1}(\bm{x}_i-\bm{\mu}_{z_i})\underbrace{P(z_i|x_i,\theta^{(g)})}_{\text{常量}}=0\]
+			两边同时乘以$\bm{\Sigma}_{z_i}$（假设协方差矩阵非奇异），解得：
+				\[\bm{\mu}_{z_i} = \sum_{i=1}^N\frac{1}{P(z_i|x_i,\theta^{(g)})} \sum_{i=1}^{N}P(z_i|x_i,\theta^{(g)})\bm{x}_i\]
+				
+			\textbf{对$\bm{\Sigma}_{z_i}$求导，}并置为零，解得：
+			\[\bm{\Sigma}_{z_i} = \sum_{i=1}^N\frac{1}{P(z_i|x_i,\theta^{(g)})} \sum_{i=1}^{N}P(z_i|x_i,\theta^{(g)})(\bm{x}_i-\bm{\mu}_{z_i})(\bm{x}_i-\bm{\mu}_{z_i})^T\]
+				
 				
 			
 		

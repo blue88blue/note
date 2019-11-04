@@ -369,16 +369,124 @@
 			\begin{figure}[H]
 				\centering\includegraphics[scale=0.4]{33.png}
 			\end{figure}
-			
+			以上，LMS算法的收敛性证明完毕。
 				
-	
-	
-	
-	
-	
-	
-	
-	
-		
+		\subsection{LMS算法的权值期望$W[\bm{w}(n)]$的性能}
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{34.png}
+			\end{figure}
+			上式最后一项期望，由于里面的项是相关的，不能直接拆开为两个期望相乘。近似：
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{35.png}
+			\end{figure}
+			$\bm{p}$为互相关矩阵，并使用$\bm{Rw}_0=\bm{p}$代换。
+			
+			变量代换$\bm{v}(n)$：
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{36.png}
+			\end{figure}
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{37.png}
+			\end{figure}
+			时间常数$\tau$越小，收敛速度越快。
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{38.png}
+			\end{figure}
+		\subsection{LMS算法的均方误差$E[|e(n)|^2]$的性能}
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{39.png}
+			\end{figure}
+			误差的矩阵形式：
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{40.png}
+			\end{figure}
+			将$E[|e(n)|^2]_{min}$代入$E[|e(n)|^2]$：
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.45]{41.png}
+			\end{figure}
+			并使用$\bm{Rw}_0=\bm{p}$代换掉$\bm{p}$，并且利用了公式$(a-b)x(a^*-b^*) = axa^*-a^*xb-b^*xa+b^*xb$化简：
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{42.png}
+			\end{figure}
+			将R特征值分解：
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{43.png}
+			\end{figure}
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{44.png}
+			\end{figure}
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{45.png}
+			\end{figure}
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{46.png}
+			\end{figure}
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{47.png}
+			\end{figure}
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{48.png}
+			\end{figure}
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{49.png}
+			\end{figure}
+			\begin{figure}[H]
+				\centering\includegraphics[scale=0.4]{50.png}
+			\end{figure}
+			
+		\section{RLS自适应滤波算法}
+			\subsection{时间平均意义下的最优维纳解：}
+				\begin{figure}[H]
+					\centering\includegraphics[scale=0.4]{51.png}
+				\end{figure}
+				\begin{figure}[H]
+					\centering\includegraphics[scale=0.4]{52.png}
+				\end{figure}
+				向量求导：
+				\begin{figure}[H]
+					\centering\includegraphics[scale=0.4]{53.png}
+				\end{figure}
+				令，公式简化：
+				\begin{figure}[H]
+					\centering\includegraphics[scale=0.4]{54.png}
+				\end{figure}
+				\begin{figure}[H]
+					\centering\includegraphics[scale=0.4]{55.png}
+				\end{figure}
+				\begin{figure}[H]
+					\centering\includegraphics[scale=0.4]{56.png}
+				\end{figure}
+				\begin{figure}[H]
+					\centering\includegraphics[scale=0.4]{57.png}
+				\end{figure}
+				\begin{figure}[H]
+					\centering\includegraphics[scale=0.4]{58.png}
+				\end{figure}
+			\subsection{RLS迭代解：}
+				\begin{figure}[H]
+					\centering\includegraphics[scale=0.4]{59.png}
+				\end{figure}
+				这样关于逆矩阵递归，就不用求逆了。
+				
+				再化简：
+				\begin{figure}[H]
+					\centering\includegraphics[scale=0.4]{60.png}
+				\end{figure}
+				$\bm{k}(n)$又可以写成下式：
+				\begin{figure}[H]
+					\centering\includegraphics[scale=0.4]{61.png}
+				\end{figure}
+				\begin{figure}[H]
+					\centering\includegraphics[scale=0.45]{62.png}
+				\end{figure}
+				\begin{figure}[H]
+					\centering\includegraphics[scale=0.4]{63.png}
+				\end{figure}
+				\begin{figure}[H]
+					\centering\includegraphics[scale=0.45]{64.png}
+				\end{figure}
+				\begin{figure}[H]
+					\centering\includegraphics[scale=0.4]{65.png}
+				\end{figure}
 
 \end{document}

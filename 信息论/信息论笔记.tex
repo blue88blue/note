@@ -234,11 +234,102 @@
 	\subsection{平均互信息量的不增性}
 		略（手写笔记）
 		
+	\section{多符号离散信源与信道}
+		\subsection{多符号信源基本概念}
+			信源在每一个单位时间内，以一定的概率$P(a_{il})(l=1,2,3,...)$，发出信源符号集$X:\{a_1,a_2,\cdots,a_r\}$中的某一符号$a_{il}(l=1,2,3,...)\subset\{a_1,a_2,\cdots,a_r\}$，随着时间推移，形成无限长的随机符号序列$(a_{i1},a_{i2},\cdots)$,相当与无限长的随机变量序列$(X_1X_2\cdots X_N\cdots)$
+		\subsection{离散平稳信源的定义}
+			多符号离散信源$\bm{X} = X_1X_2\cdots X_N\cdots$的各维联合概率分布，不随时间发生变化，与其实时刻的选择无关。若Q和T表示两个任意的时刻，则有:
+			\[P\{X_Q=a_i\} = P\{X_T=a_i\} =p(a_i)\]
+			\[P\{X_Q=a_i,X_{Q+1}=a_j\} = P\{X_T=a_i,X_{T+1}=a_j\} =p(a_i,a_j)\]
+			\[\cdots\]
+			\[\text{条件概率形如：}P\{X_{Q+1}=a_j|X_Q=a_i\} = P\{X_{T+1}=a_j|X_T=a_i\} =p(a_j|a_i)\]
+			\subsubsection{数学模型}
+				将随机变量序列，将每N个变量分为一组，假定组与组之间统计独立，组内的N个信源符号仍然保持统计依赖关系。 在定长N和统计独立的假设下，长度为N的随机变量序列
+				\[\bm{X} = X_1X_2\cdots X_N\]
+				\[\text{每一组消息：}\alpha_i = (a_{i1}a_{i2}\cdots a_{iN})\]
+				\[\sum_{i=1}^{r^N}p(\alpha_i) = 1\]
+		\subsection{离散平稳无记忆信源的信息熵}
+			离散平稳无记忆信源X的N次扩展信源$X_N$的概率：
+			\[P(X_N) = P(X_1X_2\cdots X_N) = P(X_1)P(X_2)\cdots P(X_N)\]
+			
+			某一消息的概率:
+			\[p(\alpha_i) = p(\alpha_{i1}\alpha_{i2}\cdots\alpha_{iN}) = p(\alpha_{i1})p(\alpha_{i2})\cdots p(\alpha_{iN}\]
+			
+			\textbf{定理：(证明P194)}
+			\[ H(X_N) =H(X_1X_2\cdots X_N) = NH(X) \]
+		\subsection{离散平稳有记忆信源的信息熵}
+			离散平稳无记忆信源X的N次扩展信源$X_N$的概率：
+			\[P(\bm{X}) = P(X_1X_2\cdots X_N) = P(X_1)P(X_2|X_1)P(X_3|X_1X_2)\cdots P(X_N|X_1X_2\cdots X_{N-1})\]
+			
+			某一消息的概率:
+			\[p(\alpha_i) = p(\alpha_{i1}\alpha_{i2}\cdots\alpha_{iN}) = p(\alpha_{i1})p(\alpha_{i2}|\alpha_{i1})p(\alpha_{i3}|\alpha_{i1}\alpha_{i2})\cdots p(\alpha_{iN}\alpha_{i1}\alpha_{i2}\cdots\alpha_{iN-1})\]
+			
+			\textbf{定理：(证明P201)}
+			\[ H(\bm{X}) =H(X_1X_2\cdots X_N) =H(X_1)+H(X_2|X_1)+H(X_3|X_1X_2)+\cdots+H(X_N|X_1X_2\cdot X_{N-1})\]
+			
+			\textbf{定理：(证明P203)}
+			\[H(X_k|X_1X_2\cdots X_{k-1}) \leq H(X_k)\]
 		
-				
-		
-		
-		
-		
+			\textbf{定理：(证明P205)}
+			\[H(X_k|X_1X_2\cdots X_{k-1}) \leq H(X_{k-1}|X_1X_2\cdots X_{k-2})\]
+			
+			\textbf{推论：(证明P206)}
+			\[logr \geq H(X_1) \geq H(X_2|X_1) \geq H(X_3|X_1X_2)\geq\cdots\geq H(X_N|X_1X_2\cdots X_{N-1})\]
+			
+			
+		\subsection{离散平稳有记忆信源的极限熵}
+			定义：离散平稳有记忆信源X的N次扩展信源$\bm{X} = X_1X_2\cdots X_N$的平均符号熵(每发出一个符号提供的平均信息量)：
+			\[H_N(\bm{X}) = H_N(X_1X_2\cdots X_N) = \frac{ H(X_1X_2\cdots X_N)}{N}\]
+			
+			极限熵(信源处于稳定状态时，每发出一个符号提供的平均信息量)：
+			\[H_\infty = \lim_{N\rightarrow\infty}H_N(\bm{X}) =\lim_{N\rightarrow\infty} \frac{ H(X_1X_2\cdots X_N)}{N}\]
+			去除了“消息定长”和“消息与消息之间统计独立”的两个人为假设。
+			
+			\textbf{定理:(证明P210)}
+			\[H_\infty = \lim_{N\rightarrow\infty}H(X_N|X_1X_2\cdots X_N)\]
+		\subsection{Markov信源的极限熵}	
+			信源X，任何时刻$t_{m+1}$随机变量$X_{m+1}$发出符号$a_{im+1}$只与前m个符号$(a_{i1},a_{i2},\cdots,a_{im})$有关，则称该离散平稳有记忆信源为m阶Markov信源。
+			
+			\textbf{定理：m-M信源消息的n步转移矩阵，等于一步转移概率矩阵的n次乘积(P215)}
+			\[[P(n)] = [P]\cdot[P]\cdots[P]\]
+			
+			\textbf{定理：消息的极限概率$p(S_i)$是下列方程的唯一解(P217)}
+			\[p(S_j) = \sum_{i=1}^{r^m}p(S_i)p(S_j|S_i)\]
+			
+			\textbf{定理：m-M信源的极限熵等于m阶条件熵(P225)}
+			\[H_{\infty} = H(X_{m+1}|X_1X_2\cdots X_m) = -\sum_{i1=1}^{r^m}\sum_{j=1}^{r^m}p(S_i)p(S_j|S_i)logp(S_j|S_i)\]
+			
+		\subsection{信源的剩余度(冗余度)与结构信息}
+			结构信息：
+			\[I_{0\infty m} = \underbrace{H_0}_{logr}-H_{\infty m}\]
+			$H_0$:信源能提供信息的最大能力，$H_{\infty m}$：信源X每个符号含有的平均信息量。
+			
+			剩余度（冗余度）：
+			\[\xi = \frac{I_{0\infty m}}{H_0} = 1-\frac{H_{\infty m}}{H_0}\]
+			例如把“北京大学”压缩成“北大”,剩余度就减小了。但是剩余度大的消息的抗干扰能力越大。
+			
+		\subsection{无记忆扩展信道}
+			性质：
+			\[P(\bm{Y}|\bm{X}) = P(Y_1Y_2\cdots Y_N|X_1X_2\cdots X_N) = \prod_{k=1}^NP(Y_k|X_k)\]	
+			
+			\textbf{定理：}
+			\[P(Y_K|X_1X_2\cdots X_k,Y_1Y_2\cdots Y_{k-1} )=P(Y_k|X_k)\quad\text{无记忆性}\]
+			\[P(Y_1Y_2\cdots Y_{k-1} |X_1X_2\cdots X_k)=P(Y_1Y_2\cdots Y_{k-1} |X_1X_2\cdots X_{k-1})\quad\text{无预感性}\]
+			
+		\subsection{扩展信道的平均交互信息量}
+			\[I(\bm{X;Y}) = \sum_{i=1}^{r^N}\sum_{j=1}^{s^N}p(\alpha_i\beta_j)log\frac{p(\beta_j|\alpha_i)}{p(\beta_j)}\]
+			
+			\textbf{定理：离散无记忆信道的N次扩展的平均交互信息量$I(\bm{X;Y})$，小于或等于信源X各个时刻通过无记忆信道的平均交互信息量之和}
+				\[I(\bm{X;Y})\leq\sum_{k=1}^{N}I(X_k;Y_k)\]
+			当且仅当信源时离散无记忆信源的N次扩展信源，等号成立。
+		\subsection{无记忆扩展信道的信道容量}	
+			\[\max(I(\bm{X;Y}))=\sum_{k=1}^{N}I(X_k;Y_k)=NC_0\]
+			
+		\subsection{独立并列信道的信道容量}	
+			\textbf{定理：}
+			\[I(\bm{X;Y}) = I(X_1X_2\cdots X_N|Y_1Y_2\cdots Y_N)\leq\sum_{k=1}^{N}I(X_k;Y_k)\]
+			
+			\textbf{定理：由N个信道构成的独立并列信道的联合信道容量$C_{N0}$，等于各信道自身的信道容量$C_k$之和}
+			\[C_{N0} = \sum_{k=1}^NC_k\]
 		
 \end{document}

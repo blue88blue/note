@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2019.6.20)  11 OCT 2019 10:37
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2019.6.20)  26 OCT 2019 21:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1493,19 +1493,91 @@ File: 32.png Graphic file (type QTm)
  <use  "32.png" >
 File: 33.png Graphic file (type QTm)
 
-<use  "33.png" > [16] [17] (./随机信号处理笔记.aux)
+<use  "33.png" > [16]
+File: 34.png Graphic file (type QTm)
+ <use  "34.png" >
+File: 35.png Graphic file (type QTm)
+ <use  "35.png" >
+File: 36.png Graphic file (type QTm)
+ <use  "36.png" >
+[17]
+File: 37.png Graphic file (type QTm)
+ <use  "37.png" >
+File: 38.png Graphic file (type QTm)
+ <use  "38.png" >
+File: 39.png Graphic file (type QTm)
+ <use  "39.png" > [18]
+File: 40.png Graphic file (type QTm)
+ <use  "40.png" >
+File: 41.png Graphic file (type QTm)
+
+<use  "41.png" > [19]
+File: 42.png Graphic file (type QTm)
+ <use  "42.png" >
+File: 43.png Graphic file (type QTm)
+ <use  "43.png" >
+File: 44.png Graphic file (type QTm)
+ <use  "44.png" >
+File: 45.png Graphic file (type QTm)
+
+<use  "45.png" > [20]
+File: 46.png Graphic file (type QTm)
+ <use  "46.png" >
+File: 47.png Graphic file (type QTm)
+ <use  "47.png" >
+File: 48.png Graphic file (type QTm)
+ <use  "48.png" >
+[21]
+File: 49.png Graphic file (type QTm)
+ <use  "49.png" >
+File: 50.png Graphic file (type QTm)
+ <use  "50.png" > [22]
+File: 51.png Graphic file (type QTm)
+ <use  "51.png" >
+File: 52.png Graphic file (type QTm)
+ <use  "52.png" >
+File: 53.png Graphic file (type QTm)
+
+<use  "53.png" > [23]
+File: 54.png Graphic file (type QTm)
+ <use  "54.png" >
+File: 55.png Graphic file (type QTm)
+ <use  "55.png" >
+File: 56.png Graphic file (type QTm)
+ <use  "56.png" >
+File: 57.png Graphic file (type QTm)
+
+<use  "57.png" > [24]
+File: 58.png Graphic file (type QTm)
+ <use  "58.png" >
+File: 59.png Graphic file (type QTm)
+ <use  "59.png" >
+File: 60.png Graphic file (type QTm)
+ <use  "60.png" >
+[25]
+File: 61.png Graphic file (type QTm)
+ <use  "61.png" >
+File: 62.png Graphic file (type QTm)
+ <use  "62.png" >
+File: 63.png Graphic file (type QTm)
+ <use  "63.png" >
+File: 64.png Graphic file (type QTm)
+ <use  "64.png" >
+[26]
+File: 65.png Graphic file (type QTm)
+ <use  "65.png" > [27] (./随机信号处理笔记.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.41063pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 21523 strings out of 493638
- 442610 string characters out of 6146796
+ 21605 strings out of 493638
+ 444197 string characters out of 6146796
  426628 words of memory out of 5000000
- 24681 multiletter control sequences out of 15000+600000
+ 24731 multiletter control sequences out of 15000+600000
  14495 words of font info for 79 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  65i,11n,77p,10441b,261s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 随机信号处理笔记.pdf (17 pages).
+Output written on 随机信号处理笔记.pdf (27 pages).
