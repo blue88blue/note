@@ -331,5 +331,42 @@
 			
 			\textbf{定理：由N个信道构成的独立并列信道的联合信道容量$C_{N0}$，等于各信道自身的信道容量$C_k$之和}
 			\[C_{N0} = \sum_{k=1}^NC_k\]
+		\section{无失真信源编码}
+			\subsection{单义可译码}
+				非奇异码：码字与信源符号一一对应。
+				
+				单义可译码：每一种码字的序列唯一地对应一种信源符号的序列。
+				
+				延长码：形如 1,10,100,1000。（非即时译码）
+				
+				非延长码：形如 1,01,001,0001。（即时译码）\\
+				
+				树图法构造非延长码：
+			\subsection{单义可译定理}
+				\textbf{定理:(P405)信源符号集q个，码符号集r个，q个码字的长度分别为$n_1,n_2,\cdots,n_q$，存在单义可译码的充要条件是$q,r,n_i$满足Kraft条件：}
+					\[\sum_{i=1}^qr^{-n_i}\leq1\]	
+			\subsection{平均码长与码率}
+				平均码长（每个信源所需的平均码符号数）：
+				\[\bar{n}=\sum_{i=1}^qp(s_i)n_i,\text{码符号/信源符号}\]
+				
+				码率(每个码符号所携带的平均信息量):
+				\[R=\frac{H(S)}{\bar{n}},\frac{\text{比特/信源符号}}{\text{码符号/信源符号}}=\text{比特/码符号}\]
+				\textbf{定理:(P412)对于离散无记忆信源}
+				\[\bar{n}\geq\frac{H(S)}{logr}\]
+				进一步降低平均码长会引起失真。（改进：可以对信源的扩展信源进行编码）
+				
+				存在单义可译码满足：
+				\[\frac{H(S)}{logr}\leq\bar{n}\leq\frac{H(S)}{logr}=1\]
+				\[\frac{logr}{1+\frac{logr}{H(S)}}<R\leq logr\]
+			\subsection{信源扩展与数据压缩}
+				\textbf{定理（P420）扩展次数足够多，平均码长可达到下限：}
+				\[\lim_{N\rightarrow\infty}\bar{n}=\frac{H(S)}{logr}\]
+				
+				\textbf{对于离散有记忆信源：}
+				\[\lim_{N\rightarrow\infty}\bar{n}=\frac{H_\infty}{logr}\]
+			\subsection{无失真编码定理}
+			\subsection{霍夫曼编码}
+				
+				
 		
 \end{document}

@@ -22,3 +22,7 @@
 \contentsline {section}{\numberline {5}RLS自适应滤波算法}{23}
 \contentsline {subsection}{\numberline {5.1}时间平均意义下的最优维纳解：}{23}
 \contentsline {subsection}{\numberline {5.2}RLS迭代解：}{25}
+\contentsline {section}{\numberline {6}功率谱估计}{28}
+\contentsline {subsection}{\numberline {6.1}自相关序列的估计}{28}
+\contentsline {subsection}{\numberline {6.2}矩形窗截断（解决方法1）}{29}
+\contentsline {subsection}{\numberline {6.3}三角窗截断（解决方法2）}{34}
