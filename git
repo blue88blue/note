@@ -187,8 +187,8 @@ Git友情提醒，feature-vulcan分支还没有被合并，如果删除，将丢
 # 因为创建的标签都只存储在本地，不会自动推送到远程。所以，打错的标签可以在本地安全删除。
 
 
-
-
+# 设置别名
+git config --global alias.st status
 
 
 
